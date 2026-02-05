@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ticketing98 - Tickets</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <link href="https://unpkg.com/98.css@0.1.21/dist/98.css" rel="stylesheet"/>
+    <link href="styles.css" rel="stylesheet"/>
+    <script defer src="index.js"></script>
+</head>
+<body class="common-body">
+<div class="window" id="sidenav">
+    <div class="title-bar">
+        <div class="title-bar-text">Ticketing98</div>
+    </div>
+    <div class="window-body sidenav-body">
+        <a href="dashboard.html">
+            <button>Dashboard</button>
+        </a>
+        <a href="projects.html">
+            <button>Projects</button>
+        </a>
+        <a href="tickets.html">
+            <button disabled>Tickets</button>
+        </a>
+    </div>
+</div>
+<div class="window" id="main">
+    <div class="title-bar">
+        <div class="title-bar-text">Tickets List</div>
+    </div>
+    <div class="window-body">
+        <h4>Tickets</h4>
+        <div class="sunken-panel ticket-list">
+            <table>
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Status</th>
+                    <th>Title</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><a href="#">SKB-1</a></td>
+                    <td>In progress</td>
+                    <td>Ticket Name Go Here :)</td>
+                    <td><a href="#">[View]</a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <a href="create_ticket.html"><button>Create new ticket</button></a>
+    </div>
+</div>
+<div class="window bottom-nav-bar">
+    <button class="start-menu-button" onclick="startMenuClick()">
+        <img alt="Start Icon" src="icons/windows-0.png">
+        <span><b>Start Menu</b></span>
+    </button>
+</div>
+</body>
+</html>

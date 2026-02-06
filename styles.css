@@ -59,6 +59,21 @@ h1, h2, h3, h4 {
     font-family: Arial, sans-serif;
 }
 
+.hidden {
+    display: none !important;
+}
+
+
+.error-message {
+    font-size: 11px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 4px;
+    margin-left: 8px;
+}
 
 
 /*
@@ -161,13 +176,22 @@ h1, h2, h3, h4 {
 }
 
 /*
-    LOGIN PAGE STUFF (singular)
+    LOGIN PAGE STUFF
  */
 
 .login-form-container {
     max-width: 400px;
     margin: 2rem auto auto;
 }
+
+.login-form-input {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-bottom: 4px;
+}
+
 
 /*
     STUFF I DON'T KNOW WHERE ELSE TO PUT

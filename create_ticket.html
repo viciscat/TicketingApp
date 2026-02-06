@@ -32,24 +32,34 @@
     <div class="window-body" style="display: flex; flex-direction: column; align-items: flex-start">
         <h4 style="flex-shrink: 0">Ticket Wizard</h4>
         <div class="window-content">
-            <form id="create-ticket">
+            <form id="create-ticket-form">
                 <div class="field-row">
                     <div class="field-row-stacked">
                         <label for="project">Target Project</label>
                         <select id="project">
+                            <option hidden value="">Select Project</option>
                             <option>Skyblocker</option>
                             <option>Other</option>
                         </select>
                     </div>
                 </div>
+                <div id="project-error" class="hidden font-13px error-message">
+                    <img src="icons/msg_error-2.png" alt="Error Project" width="16" height="16">
+                    A ticket must be linked to a project!
+                </div>
                 <div class="field-row-stacked" style="max-width: 200px">
                     <label for="name">Ticket Name</label>
                     <input id="name" type="text"/>
+                </div>
+                <div id="name-error" class="hidden font-13px error-message">
+                    <img src="icons/msg_error-2.png" alt="Error Name" width="16" height="16">
+                    A ticket must have a name!
                 </div>
                 <div class="field-row"> <!-- Dropdowns -->
                     <div class="field-row-stacked">
                         <label for="ticket-type">Ticket Type</label>
                         <select id="ticket-type">
+                            <option hidden value="">Select Type</option>
                             <option>Task</option>
                             <option>Issue</option>
                         </select>
@@ -58,25 +68,59 @@
                     <div class="field-row-stacked">
                         <label for="priority">Priority</label>
                         <select id="priority">
+                            <option hidden value="">Select Priority</option>
                             <option>3 - Must</option>
                             <option>2 - Should</option>
                             <option>1 - Could</option>
                         </select>
                     </div>
                 </div>
+                <div id="ticket-type-error" class="hidden font-13px error-message">
+                    <img src="icons/msg_error-2.png" alt="Error Ticket Type" width="16" height="16">
+                    A ticket must have a type!
+                </div>
+                <div id="priority-error" class="hidden font-13px error-message">
+                    <img src="icons/msg_error-2.png" alt="Error Priority" width="16" height="16">
+                    A ticket must have a priority!
+                </div>
                 <div class="field-row-stacked" style="max-width: 300px">
                     <label for="description">Description</label>
                     <textarea id="description" rows="8"></textarea>
                 </div>
             </form>
+            <script>
+                function checkField(id, idError) {
+                    let element = document.getElementById(id);
+                    let elementError = document.getElementById(idError);
+
+                    if (element.value === '') {
+                        elementError.classList.remove("hidden");
+                        return false;
+                    } else {
+                        elementError.classList.add("hidden");
+                        return true;
+                    }
+                }
+
+                document.getElementById('create-ticket-form').addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    let valid = true;
+                    valid &= checkField('project', 'project-error');
+                    valid &= checkField('name', 'name-error');
+                    valid &= checkField('ticket-type', 'ticket-type-error');
+                    valid &= checkField('priority', 'priority-error');
+                    if (valid) location.href = 'ticket.html'
+                })
+            </script>
         </div>
         <p>This will create a ticket for the 'Skyblocker' project.</p>
-        <input form="create-ticket" type="submit" value="Create Ticket"/>
+        <input form="create-ticket-form" type="submit" value="Create Ticket"/>
     </div>
 </div>
 <div class="window bottom-nav-bar">
-    <button class="start-menu-button" onclick="startMenuClick()"><img alt="Start Icon"
-                                                                      src="icons/windows-0.png"><span><b>Start Menu</b></span>
+    <button class="start-menu-button" onclick="startMenuClick()">
+        <img alt="Start Icon" src="icons/windows-0.png">
+        <span><b>Start Menu</b></span>
     </button>
 </div>
 </body>

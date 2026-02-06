@@ -6,14 +6,14 @@
     font-family: "Pixelated MS Sans Serif 16px";
     font-style: normal;
     font-weight: 400;
-    src: url(pixel16.ttf) format("truetype");
+    src: url(../pixel16.ttf) format("truetype");
 }
 
 @font-face {
     font-family: "Pixelated MS Sans Serif 16px";
     font-style: normal;
     font-weight: 700;
-    src: url(pixel16bold.ttf) format("truetype");
+    src: url(../pixel16bold.ttf) format("truetype");
 }
 
 .font-13px {

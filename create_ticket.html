@@ -7,6 +7,7 @@
     <link href="https://unpkg.com/98.css@0.1.21/dist/98.css" rel="stylesheet"/>
     <link href="css/styles.css" rel="stylesheet"/>
     <script defer src="js/index.js"></script>
+    <script src="js/formHelper.js"></script>
 </head>
 <body class="common-body">
 <div class="window" id="sidenav">
@@ -32,83 +33,68 @@
     <div class="window-body" style="display: flex; flex-direction: column; align-items: flex-start">
         <h4 style="flex-shrink: 0">Ticket Wizard</h4>
         <div class="window-content">
-            <form id="create-ticket-form">
-                <div class="field-row">
-                    <div class="field-row-stacked">
-                        <label for="project">Target Project</label>
-                        <select id="project">
-                            <option hidden value="">Select Project</option>
-                            <option>Skyblocker</option>
-                            <option>Other</option>
-                        </select>
+            <form id="create-ticket-form" class="basic-form">
+                <div class="field-row-stacked">
+                    <label for="project">Target Project</label>
+                    <select id="project">
+                        <option hidden value="">Select Project</option>
+                        <option>Skyblocker</option>
+                        <option>Other</option>
+                    </select>
+                    <div id="project-error" class="hidden font-13px error-message">
+                        <img src="icons/msg_error-2.png" alt="Error Project" width="16" height="16">
+                        <span>A ticket must be linked to a project!</span>
                     </div>
                 </div>
-                <div id="project-error" class="hidden font-13px error-message">
-                    <img src="icons/msg_error-2.png" alt="Error Project" width="16" height="16">
-                    A ticket must be linked to a project!
-                </div>
-                <div class="field-row-stacked" style="max-width: 200px">
+
+                <div class="field-row-stacked">
                     <label for="name">Ticket Name</label>
                     <input id="name" type="text"/>
-                </div>
-                <div id="name-error" class="hidden font-13px error-message">
-                    <img src="icons/msg_error-2.png" alt="Error Name" width="16" height="16">
-                    A ticket must have a name!
-                </div>
-                <div class="field-row"> <!-- Dropdowns -->
-                    <div class="field-row-stacked">
-                        <label for="ticket-type">Ticket Type</label>
-                        <select id="ticket-type">
-                            <option hidden value="">Select Type</option>
-                            <option>Task</option>
-                            <option>Issue</option>
-                        </select>
-                    </div>
-                    <span></span>
-                    <div class="field-row-stacked">
-                        <label for="priority">Priority</label>
-                        <select id="priority">
-                            <option hidden value="">Select Priority</option>
-                            <option>3 - Must</option>
-                            <option>2 - Should</option>
-                            <option>1 - Could</option>
-                        </select>
+                    <div id="name-error" class="hidden font-13px error-message">
+                        <img src="icons/msg_error-2.png" alt="Error Name" width="16" height="16">
+                        <span>A ticket must have a name!</span>
                     </div>
                 </div>
-                <div id="ticket-type-error" class="hidden font-13px error-message">
-                    <img src="icons/msg_error-2.png" alt="Error Ticket Type" width="16" height="16">
-                    A ticket must have a type!
+
+                <!-- Dropdowns -->
+                <div class="field-row-stacked">
+                    <label for="ticket-type">Ticket Type</label>
+                    <select id="ticket-type">
+                        <option hidden value="">Select Type</option>
+                        <option>Task</option>
+                        <option>Issue</option>
+                    </select>
+                    <div id="ticket-type-error" class="hidden font-13px error-message">
+                        <img src="icons/msg_error-2.png" alt="Error Ticket Type" width="16" height="16">
+                        <span>A ticket must have a type!</span>
+                    </div>
                 </div>
-                <div id="priority-error" class="hidden font-13px error-message">
-                    <img src="icons/msg_error-2.png" alt="Error Priority" width="16" height="16">
-                    A ticket must have a priority!
+                <div class="field-row-stacked">
+                    <label for="priority">Priority</label>
+                    <select id="priority">
+                        <option hidden value="">Select Priority</option>
+                        <option>3 - Must</option>
+                        <option>2 - Should</option>
+                        <option>1 - Could</option>
+                    </select>
+                    <div id="priority-error" class="hidden font-13px error-message">
+                        <img src="icons/msg_error-2.png" alt="Error Priority" width="16" height="16">
+                        <span>A ticket must have a priority!</span>
+                    </div>
                 </div>
-                <div class="field-row-stacked" style="max-width: 300px">
+                <div class="field-row-stacked" style="width: 300px">
                     <label for="description">Description</label>
                     <textarea id="description" rows="8"></textarea>
                 </div>
             </form>
             <script>
-                function checkField(id, idError) {
-                    let element = document.getElementById(id);
-                    let elementError = document.getElementById(idError);
-
-                    if (element.value === '') {
-                        elementError.classList.remove("hidden");
-                        return false;
-                    } else {
-                        elementError.classList.add("hidden");
-                        return true;
-                    }
-                }
-
                 document.getElementById('create-ticket-form').addEventListener('submit', (e) => {
                     e.preventDefault();
                     let valid = true;
-                    valid &= checkField('project', 'project-error');
-                    valid &= checkField('name', 'name-error');
-                    valid &= checkField('ticket-type', 'ticket-type-error');
-                    valid &= checkField('priority', 'priority-error');
+                    valid &= checkInput('project', 'project-error', [emptyCondition("A ticket must be linked to a project!")]);
+                    valid &= checkInput('name', 'name-error', [emptyCondition("A ticket must have a name!")]);
+                    valid &= checkInput('ticket-type', 'ticket-type-error', [emptyCondition("A ticket must have a type!")]);
+                    valid &= checkInput('priority', 'priority-error', [emptyCondition("A ticket must have to a priority!")]);
                     if (valid) location.href = 'ticket.html'
                 })
             </script>

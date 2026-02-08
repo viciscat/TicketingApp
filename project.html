@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Ticketing98 - Tickets</title>
+    <title>Ticketing98 - Project Info</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <link href="https://unpkg.com/98.css@0.1.21/dist/98.css" rel="stylesheet"/>
     <link href="css/styles.css" rel="stylesheet"/>
@@ -19,19 +19,49 @@
             <button>Dashboard</button>
         </a>
         <a href="projects.html">
-            <button>Projects</button>
+            <button disabled>Projects</button>
         </a>
         <a href="tickets.html">
-            <button disabled>Tickets</button>
+            <button>Tickets</button>
         </a>
     </div>
 </div>
 <div class="window" id="main">
     <div class="title-bar">
-        <div class="title-bar-text">Tickets List</div>
+        <div class="title-bar-text">Project Info</div>
     </div>
     <div class="window-body">
-        <h4>Tickets</h4>
+        <div class="title-container">
+            <img class="icon" src="icons/computer-2.png" alt="Ticket Icon"/>
+            <div class="field-border" style="padding: 8px; width: 30%; min-width: 200px">
+                Skyblocker
+            </div>
+        </div>
+        <b>Collaborators:</b>
+        <br/>
+        <div class="sunken-panel small-sunken-table">
+            <table>
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Role</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Jason John</td>
+                    <td>Developer</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <b>Contract:</b>
+        <div class="contract-container">
+            <button>View contract</button>
+            <button>Update contract</button>
+            <span>Last Updated: 05/02/2026 at 12:45</span>
+        </div>
+        <b>Tickets:</b>
         <div class="filter-row">
             <div class="field-stacked">
                 <label for="ticket-type-filter">Ticket Type</label>

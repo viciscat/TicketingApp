@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ticketing98 - Settings</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <link href="https://unpkg.com/98.css@0.1.21/dist/98.css" rel="stylesheet"/>
+  <link href="css/styles.css" rel="stylesheet"/>
+  <script defer src="js/index.js"></script>
+</head>
+<body class="common-body">
+<div class="window" id="sidenav">
+  <div class="title-bar">
+    <div class="title-bar-text">Ticketing98</div>
+  </div>
+  <div class="window-body sidenav-body">
+    <a href="dashboard.html">
+      <button>Dashboard</button>
+    </a>
+    <a href="projects.html">
+      <button>Projects</button>
+    </a>
+    <a href="tickets.html">
+      <button>Tickets</button>
+    </a>
+  </div>
+</div>
+<div class="window" id="main">
+  <div class="title-bar">
+    <div class="title-bar-text">Settings</div>
+  </div>
+  <div class="window-body" style="width: fit-content">
+      <div class="field-row">
+        <label for="language">Language</label>
+        <select id="language">
+          <option value="en">English</option>
+          <option value="fr">French</option>
+        </select>
+      </div>
+      <div class="field-row">
+      <label>Bumpscosity:</label>
+      <label for="bumpscosity">Low</label>
+      <input id="bumpscosity" type="range" min="1" max="11" value="5" />
+      <label>High</label>
+      </div>
+  </div>
+</div>
+<div class="window bottom-nav-bar">
+  <button class="start-menu-button" onclick="startMenuClick()">
+    <img alt="Start Icon" src="icons/windows-0.png">
+    <span><b>Start Menu</b></span>
+  </button>
+</div>
+
+</body>
+</html>

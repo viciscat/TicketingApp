@@ -6,14 +6,14 @@
     font-family: "Pixelated MS Sans Serif 16px";
     font-style: normal;
     font-weight: 400;
-    src: url(../pixel16.ttf) format("truetype");
+    src: url(../fonts/pixel16.ttf) format("truetype");
 }
 
 @font-face {
     font-family: "Pixelated MS Sans Serif 16px";
     font-style: normal;
     font-weight: 700;
-    src: url(../pixel16bold.ttf) format("truetype");
+    src: url(../fonts/pixel16bold.ttf) format("truetype");
 }
 
 .font-13px {
@@ -63,16 +63,16 @@ h1, h2, h3, h4 {
     display: none !important;
 }
 
+.field-stacked {
+    display: flex;
+    flex-direction: column
+}
 
-.error-message {
-    font-size: 11px;
-    margin-top: 4px;
-    margin-bottom: 4px;
+.filter-row {
     display: flex;
     flex-direction: row;
-    align-items: center;
-    gap: 4px;
-    margin-left: 8px;
+    gap: 6px;
+    flex-wrap: wrap;
 }
 
 
@@ -94,6 +94,7 @@ h1, h2, h3, h4 {
 .window-body {
     flex: 1;
     min-height: 0; /*If the window body is a flexbox this fixes weird behavior where the contents will not overflow properly*/
+    overflow-y: auto;
 }
 
 .window-content {
@@ -105,6 +106,45 @@ h1, h2, h3, h4 {
 
 .title-bar {
     flex-shrink: 0;
+}
+
+/*
+    FORM STUFF
+ */
+
+.error-message {
+    font-size: 11px;
+    margin-top: 4px;
+    margin-bottom: 8px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 4px;
+    margin-left: 8px;
+}
+
+.basic-form > .field-row-stacked {
+    width: fit-content;
+    min-width: 150px;
+}
+
+input[type=file]::file-selector-button, input[type=button] {
+    background: silver;
+    border: none;
+    border-radius: 0;
+    box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #fff, inset -2px -2px grey, inset 2px 2px #dfdfdf;
+    box-sizing: border-box;
+    color: transparent;
+    min-height: 23px;
+    min-width: 75px;
+    padding: 0 12px;
+    text-shadow: 0 0 #222;
+    font-family: "Pixelated MS Sans Serif 16px", Arial, sans-serif;
+}
+
+input[type=file]::file-selector-button:active {
+    box-shadow: inset -1px -1px #fff, inset 1px 1px #0a0a0a, inset -2px -2px #dfdfdf, inset 2px 2px grey;
+    text-shadow: 1px 1px #222
 }
 
 /*
@@ -180,7 +220,7 @@ h1, h2, h3, h4 {
     LOGIN PAGE STUFF
  */
 
-.login-form-container {
+.centered-container {
     max-width: 400px;
     margin: 2rem auto auto;
 }
@@ -215,7 +255,7 @@ h1, h2, h3, h4 {
 .small-sunken-table {
     max-width: 100%;
     min-width: 250px;
-    display: inline-block;
+    width: min-content;
 }
 
 
@@ -256,3 +296,42 @@ h1, h2, h3, h4 {
     font-family: "Arial", sans-serif;
 }
 
+/*
+    TICKET/PROJECT PAGE
+ */
+
+.title-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.ticket-icon-number-container {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2px;
+}
+
+.contract-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    margin-top: 8px;
+    margin-bottom: 16px;
+}
+
+#success-message {
+    padding: 8px 4px;
+}
+
+.collaborators-input-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}

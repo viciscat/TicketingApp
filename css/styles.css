@@ -164,11 +164,7 @@ input[type=file]::file-selector-button:active {
     gap: 2px;
 }
 
-.sidenav-body a {
-    text-decoration: none;
-}
-
-.sidenav-body a button {
+.sidenav-body button {
     padding: 8px;
     width: 100%;
     font-weight: bold;
